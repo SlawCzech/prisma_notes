@@ -30,13 +30,14 @@ model Profile {
 
 model Post {
   id           String     @id @default(uuid())
+  title        String
   rating       Decimal
   createdAt    DateTime   @default(now())
   updatedAt    DateTime   @updatedAt
-  author       User       @relation("writtenPosts", fields: [authorId], references: [id])
-  authorId     String
-  favoritesBy  User       @relation("favoritePosts", fields: [favoriteById], references: [id])
-  favoriteById String
+  author       User?      @relation("writtenPosts", fields: [authorId], references: [id])
+  authorId     String?
+  favoritesBy  User?      @relation("favoritePosts", fields: [favoriteById], references: [id])
+  favoriteById String?
   categories   Category[]
 }
 

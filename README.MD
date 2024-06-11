@@ -35,6 +35,37 @@ await prisma.<model_name>.create({
 
 await prisma.<model_name>.findMany();
 
+// read with filter
+await prisma.<model_name>.findMany({
+    where: {
+        column_name: value
+        column_name: {
+            operator: value
+        }
+    }
+});
+
+// read with additional tables
+await prisma.<model_name>.findMany({
+    where: {
+        column_name: value
+    },
+    include: {
+        relation_name: boolean
+    }
+});
+
+
+// read with specific columns
+await prisma.<model_name>.findMany({
+    where: {
+        column_name: value
+    },
+    select: {
+        column_name: boolean
+    }
+});
+
 ```
 
 
